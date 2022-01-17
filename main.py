@@ -2,7 +2,7 @@ def temperature_converter():
     primary = str(input('Available scales: K(Kelvin), C(Celsius), F(Fahrenheit). '
                         'Use "!help" to see what i can do :) '))
     if primary.lower() == '!help':
-        return print('Simple temperature converter. Input format: PRIMARY_TEMP VALUE SOURCE_TEMP. '
+        return print('Simple temperature converter. Input format: PRIMARY_TEMP VALUE SOURCE_TEMP '
                      'Available scales: K(Kelvin), C(Celsius), F(Fahrenheit)')
     value = float(input('Enter value to convert '))
     source = str(input('Available scales: K(Kelvin), C(Celsius), F(Fahrenheit). '))
