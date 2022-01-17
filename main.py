@@ -1,32 +1,38 @@
 def temperature_converter():
-    inp = input('Ready to listen. Use "!help" to see what i can do :) ').split()
+    primary = str(input('Available scales: K(Kelvin), C(Celsius), F(Fahrenheit). '
+                        'Use "!help" to see what i can do :) '))
+    if primary.lower() == '!help':
+        return print('Simple temperature converter. Input format: PRIMARY_TEMP VALUE SOURCE_TEMP. '
+                     'Available scales: K(Kelvin), C(Celsius), F(Fahrenheit)')
+    value = float(input('Enter value to convert '))
+    source = str(input('Available scales: K(Kelvin), C(Celsius), F(Fahrenheit). '))
 
-    if inp[0].lower() == 'f':
-        celsius = farr_cell(inp[1], 'c')
-        if inp[2].lower() == 'c':
-            to_print(inp[1], celsius, inp[0], inp[2])
+    if primary[0].lower() == 'f':
+        celsius = farr_cell(value, 'c')
+        if source[0].lower() == 'c':
+            to_print(value, float(celsius), primary[0], source[0])
         else:
             kelvin = kelv_cell(celsius, 'k')
-            to_print(inp[1], kelvin, inp[0], inp[2])
+            to_print(value, kelvin, primary[0], source[0])
     else:
-        if inp[2].lower() == 'f':
-            if inp[0].lower() == 'c':
-                farr = farr_cell(inp[1], 'f')
-                to_print(inp[1], farr, inp[0], inp[2])
+        if source[0].lower() == 'f':
+            if primary[0].lower() == 'c':
+                farr = farr_cell(value, 'f')
+                return to_print(value, farr, primary[0], source[0])
             else:
-                cell = kelv_cell(inp[1], 'c')
+                cell = kelv_cell(value, 'c')
                 farr = farr_cell(cell, 'f')
-                to_print(inp[1], farr, inp[0], inp[2])
-        if inp[0].lower() == 'k':
-            celsius = kelv_cell(inp[1], 'c')
-            to_print(inp[1], celsius, inp[0], inp[2])
+                return to_print(value, farr, primary[0], source[0])
+        if primary[0].lower() == 'k':
+            celsius = kelv_cell(value, 'c')
+            return to_print(value, celsius, primary[0], source[0])
         else:
-            kelvin = kelv_cell(inp[1], 'k')
-            to_print(inp[1], kelvin, inp[0], inp[2])
+            kelvin = kelv_cell(value, 'k')
+            return to_print(value, kelvin, primary[0], source[0])
 
 
 def to_print(inpTemp, outTemp, inpStr, outStr):
-    return print(inpTemp + "° " + inpStr + " equals " + str(round(outTemp, 3)) + "° " + outStr)
+    return print(str(inpTemp) + "° " + inpStr + " equals " + str(round(outTemp, 3)) + "° " + outStr)
 
 
 def kelv_cell(temp, dest):
