@@ -1,16 +1,55 @@
-# This is a sample Python script.
+def temperature_converter():
+    primary = str(input('Available scales: K(Kelvin), C(Celsius), F(Fahrenheit). '
+                        'Use "!help" to see what i can do :) '))
+    if primary.lower() == '!help':
+        return print('Simple temperature converter. Input format: PRIMARY_TEMP VALUE SOURCE_TEMP '
+                     'Available scales: K(Kelvin), C(Celsius), F(Fahrenheit)')
+    value = float(input('Enter value to convert '))
+    source = str(input('Available scales: K(Kelvin), C(Celsius), F(Fahrenheit). '))
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+    if primary[0].lower() == 'f':
+        celsius = farr_cell(value, 'c')
+        if source[0].lower() == 'c':
+            to_print(value, float(celsius), primary[0], source[0])
+        else:
+            kelvin = kelv_cell(celsius, 'k')
+            to_print(value, kelvin, primary[0], source[0])
+    else:
+        if source[0].lower() == 'f':
+            if primary[0].lower() == 'c':
+                farr = farr_cell(value, 'f')
+                return to_print(value, farr, primary[0], source[0])
+            else:
+                cell = kelv_cell(value, 'c')
+                farr = farr_cell(cell, 'f')
+                return to_print(value, farr, primary[0], source[0])
+        if primary[0].lower() == 'k':
+            celsius = kelv_cell(value, 'c')
+            return to_print(value, celsius, primary[0], source[0])
+        else:
+            kelvin = kelv_cell(value, 'k')
+            return to_print(value, kelvin, primary[0], source[0])
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def to_print(inpTemp, outTemp, inpStr, outStr):
+    return print(str(inpTemp) + "° " + inpStr + " equals " + str(round(outTemp, 3)) + "° " + outStr)
 
 
-# Press the green button in the gutter to run the script.
+def kelv_cell(temp, dest):
+    if dest.lower() == 'c':
+        result = float(temp) - 273.15
+    else:
+        result = float(temp) + 273.15
+    return result
+
+
+def farr_cell(temp, dest):
+    if dest.lower() == 'c':
+        result = 5 / 9 * (float(temp) - 32)
+    else:
+        result = 9 / 5 * float(temp) + 32
+    return result
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    temperature_converter()
