@@ -13,4 +13,4 @@
 Main branch status
 
 
-![master](https://github.com/diana-yusupova999/SoftwareEngineering/actions/workflows/test/badge.svg)
+[![test](https://github.com/diana-yusupova999/SoftwareEngineering/actions/workflows/test.yml/badge.svg)](https://github.com/diana-yusupova999/SoftwareEngineering/actions/workflows/test.yml)
